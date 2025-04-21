@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>StudyBuddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+<div class="flex flex-col h-screen">
+    <!-- Header -->
+    <header class="flex items-center justify-between p-5 bg-gray-800">
+
+        <div class="flex items-center space-x-4">
+            <a href="index.html">
+                <img alt="StudyBuddy logo" class="w-20 h-20 rounded-full "  src= "/picture1/mlogo.png" />
+            </a>
+            <a href="index.html" class="text-2xl font-bold font-sans">Study Buddy</a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <input class="px-7 py-2 rounded-full bg-gray-700 text-white focus:outline-none" placeholder="Search " type="text"/>
+                <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+            </div>
+            <img alt="User   Avatar" class="w-10 h-10 rounded-full" height="40" src="/picture1/plogo.png" width="40"/>
+            <div class="text-right">
+                <p class="font-bold font-sans" id="displayUsername">user</p>
+               
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Left Sidebar - Departments -->
+        <aside class="w-1/4 bg-gray-800 p-4 overflow-y-auto">
+            <h2 class="text-4xl font-semibold mb-2 font-sans">Departments</h2>
+            <p class="text-lg text-gray-400 mb-4 px-2 24 ">Access the notes</p>
+            
+            <div class="space-y-2" id="departments-list">
+                <a href="department_template.html?dept=Computer Science" class="block w-full text-left text-gray-200 text-xl px-4 py-2  bg-gray-700  rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Computer Science</a>
+                <a href="department_template.html?dept=Information Science" class="block w-full text-left text-gray-300 text-xl px-4 py-2  bg-gray-700 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Information Science</a>
+                <a href="department_template.html?dept=Artificial Intelligence" class="block w-full text-left text-gray-300 text-xl px-4 py-2 bg-gray-700  rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Artificial Intelligence</a>
+                <a href="department_template.html?dept=Mechanical Engineering" class="block w-full text-left text-gray-300 text-xl  px-4 py-2  bg-gray-700 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Mechanical Engineering</a>
+                <a href="department_template.html?dept=Civil Engineering" class="block w-full text-left text-gray-300 text-xl  px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Civil Engineering</a>
+                <div id="more-departments" class="hidden space-y-2">
+                    <a href="department_template.html?dept=Data Science" class="block w-full text-left text-gray-300 text-xl  px-4 py-2  bg-gray-700 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Data Science</a>
+                    <a href="department_template.html?dept=Computer Science & Design" class="block w-full text-left text-gray-300 text-xl px-4 py-2 bg-gray-700  rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Computer Science & Design</a>
+                    <a href="department_template.html?dept=Electrical Engineering" class="block w-full text-left text-gray-300 text-xl  px-4 py-2  bg-gray-700 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Electrical Engineering</a>
+                    <a href="department_template.html?dept=Electronic Communication" class="block w-full text-left text-gray-300 text-xl px-4 py-2  bg-gray-700 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Electronic Communication</a>
+                    <a href="department_template.html?dept=Aeronautical Engineering" class="block w-full text-left text-gray-300 text-xl px-4 py-2  bg-gray-700 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 hover:shadow-lg">Aeronautical Engineering</a>
+                </div>
+                <button id="load-more-btn" class="w-full text-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mt-4">
+                    Load More Departments
+                </button>
+            </div>
+        </aside>
+
+        <!-- Middle Section - Question Papers -->
+        <main class="w-3/6 p-5 overflow-y-auto">
+            <h2 class="text-4xl  mb-12 font-sans">Previous Year Question Papers</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="question_papers.html?year=2023" class="block bg-gray-800 p-10 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 hover:shadow-lg font-medium ">
+                    <h3 class="text-xl  mb-2">2023 Question Papers</h3>
+                    <p class="text-gray-400">Access all question papers from 2023</p>
+                </a>
+                <a href="question_papers.html?year=2022" class="block bg-gray-800 p-10 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 hover:shadow-lg font-medium">
+                    <h3 class="text-xl  mb-2">2022 Question Papers</h3>
+                    <p class="text-gray-400">Access all question papers from 2022</p>
+                </a>
+                <a href="question_papers.html?year=2021" class="block bg-gray-800 p-10 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 hover:shadow-lg font-medium ">
+                    <h3 class="text-xl  mb-2">2021 Question Papers</h3>
+                    <p class="text-gray-400">Access all question papers from 2021</p>
+                </a>
+                <a href="question_papers.html?year=2020" class="block bg-gray-800 p-10  rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 hover:shadow-lg font-medium ">
+                    <h3 class="text-xl mb-2">2020 Question Papers</h3>
+                    <p class="text-gray-400">Access all question papers from 2020</p>
+                </a>
+            </div>
+        </main>
+
+        <!-- Right Sidebar - What's New -->
+        <aside class="w-1/4 bg-gray-800 p-4 overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-3 font-sans">What's New?</h2>
+            <div class="space-y-4">
+                <div class="bg-gray-700 p-4 rounded-lg transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4"></div>
+                        <p class="text-sm text-gray-400">3 day ago</p>
+                    </div>
+                    <p class="mt-2 text-gray-400">I'll have to try this sometime. Really like this idea. Wanna talk about it? I'm....</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4"></div>
+                        <p class="text-sm text-gray-400">3 day ago</p>
+                    </div>
+                    <p class="mt-2 text-gray-400">Consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna...</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4"></div>
+                        <p class="text-sm text-gray-400">3 day ago</p>
+                    </div>
+                    <p class="mt-2 text-gray-400">Adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor...</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script>
+    // Load More functionality for departments
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const moreDepartments = document.getElementById('more-departments');
+
+    loadMoreBtn.addEventListener('click', () => {
+        moreDepartments.classList.remove('hidden');
+        loadMoreBtn.classList.add('hidden');
+    });
+
+    // Display logged-in user information
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        document.getElementById('displayUsername').textContent = currentUser.username;
+        document.getElementById('displayEmail').textContent = `@${currentUser.email.split('@')[0]}`;
+    } else {
+        // If no user is logged in, redirect to login page
+        window.location.href = 'first.html';
+    }
+
+    // Load rooms from localStorage
+    const roomList = document.getElementById('room-list');
+    const rooms = JSON.parse(localStorage.getItem('rooms')) || [];
+
+    rooms.forEach(room => {
+        const roomCard = document.createElement('a');
+        roomCard.href = `room.html?topic=${encodeURIComponent(room.topic)}`;
+        roomCard.className = 'block bg-gray-800 p-4 rounded-lg transition-transform transform hover:scale-105 hover:shadow-lg';
+        roomCard.innerHTML = `
+            <h3>${room.title}</h3>
+            <p>${room.description || 'No description provided.'}</p>
+            <p>${room.date}</p>
+            <div class="flex items-center">
+                <img src="${room.participants[0].image}" alt="User   Avatar" class="w-10 h-10 rounded-full"/>
+                <p class="font-bold ml-2">${room.participants[0].name} (@${room.participants[0].username})</p>
+            </div>
+        `;
+        roomList.appendChild(roomCard);
+    });
+</script>
+</body>
+</html>

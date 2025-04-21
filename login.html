@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to StudyBuddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a202c;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .logo {
+            padding-top: 5px;
+           align-items: center;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+
+        h1  {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            margin-top: 15px;
+            text-shadow: #1a202c;
+            
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-top: 3px;
+            margin-bottom: 20px;
+            color: #cbd5e0;
+        }
+
+        .login-form {
+            background: #2d3748;
+            padding: 60px;
+            padding-top: 30px;
+            border-radius: 0px;
+            width: 400px;
+            height: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .login-form input {
+            width: 95%;
+            padding: 12px;
+            margin: 10px 0px;
+            border: none;
+            background: #4a5568;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            background: #2d3748;
+        }
+
+        .login-form button {
+            width: 65;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #2b6cb0;
+        }
+
+        .register-link {
+            color: #90cdf4;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="/picture1/logo.png" alt="mvj Logo" class="logo">
+    <h1 >Welcome To Study Buddy!</h1>
+    <p>Ready to gain knowledge !!</p>
+
+    <!-- Login Form -->
+    <div class="login-form">
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Enter your Email ID" required>
+            <input type="password" id="password" placeholder="Enter your Password" required>
+            <button id="loginBtn" type="submit">Login</button>
+            <a href="register.html" class="register-link">Don't have an account? Register here.</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Find user with matching email and password
+            const user = users.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                // Store current user in localStorage
+                localStorage.setItem('currentUser', JSON.stringify({
+                    username: user.username,
+                    email: user.email
+                }));
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+        });
+
+        // Add keyboard navigation
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    } else {
+                        document.getElementById('loginBtn').click();
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+

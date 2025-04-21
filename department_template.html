@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Department Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gray-900 text-white font-sans">
+<div class="flex flex-col h-screen">
+    <!-- Header -->
+    <header class="flex items-center justify-between p-5 bg-gray-800">
+        <div class="flex items-center space-x-4">
+            <a href="index.html">
+                <img alt="StudyBuddy logo" class="w-20 h-20 rounded-full" src="/picture1/mlogo.png" />
+            </a>
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="text-2xl font-bold">Study Buddy</a>
+                <span class="text-2xl font-bold text-gray-400">|</span>
+                <span class="text-2xl font-bold" id="department-title">Department Name</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <input class="px-7 py-2 rounded-full bg-gray-700 text-white focus:outline-none" placeholder="Search" type="text"/>
+                <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+            </div>
+            <img alt="User Avatar" class="w-10 h-10 rounded-full" height="40" src="/picture1/plogo.png" width="40"/>
+            <div class="text-right">
+                <p class="font-bold">user</p>
+                <p class="text-sm text-gray-400">@user</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Semester Sidebar -->
+        <aside class="w-1/4 bg-gray-800 p-4 overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">Semesters</h2>
+            <div class="space-y-2" id="semester-buttons">
+                <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="1">Semester 1</button>
+                <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="2">Semester 2</button>
+                <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="3">Semester 3</button>
+                <div id="more-semesters" class="hidden space-y-2">
+                    <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="4">Semester 4</button>
+                    <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="5">Semester 5</button>
+                    <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="6">Semester 6</button>
+                    <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="7">Semester 7</button>
+                    <button class="semester-btn w-full text-left px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" data-semester="8">Semester 8</button>
+                </div>
+                <button id="load-more-btn" class="w-full text-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mt-4">
+                    Load More
+                </button>
+            </div>
+        </aside>
+
+        <!-- Subjects Content -->
+        <main class="w-3/4 p-10 overflow-y-auto">
+            <div id="subjects-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Subjects will be dynamically loaded here -->
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    // Sample subject data - This should be replaced with actual department-specific data
+    const subjectsData = {
+        1: [
+            { name: "Mathematics I", code: "MVJ22MATS11" },
+            { name: "Physics", code: "MVJ22PHYS12" },
+            { name: "Principles of programming using C ", code: "MVJ22POPS13" },
+            { name: "Introduction to Electronics Engineering", code: "MVJ22ESCK14C" },
+            { name: "Introduction To Cyber Security ", code: "MVJ22ETCK15I" }
+        ],
+        2: [
+            { name: "Mathematics II", code: "MVJ22MATS21" },
+            { name: "Introduction to Electrical  Engineering", code: "MVJ22ESCK24B" },
+            { name: "Introduction To C++ programming", code: "MVJ22PLCK25D" },
+            { name: "Applied Chemistry for cse stream", code: "MVJ22CHES22" },
+            { name: "", code: "" }
+        ],
+        // Add more semesters as needed
+    };
+
+    // Function to display subjects for selected semester
+    function displaySubjects(semester) {
+        const container = document.getElementById('subjects-container');
+        container.innerHTML = '';
+        
+        const subjects = subjectsData[semester] || [];
+        
+        subjects.forEach(subject => {
+            const subjectCard = document.createElement('div');
+            subjectCard.className = 'bg-gray-800 p-6 rounded-lg transition-transform transform hover:scale-105 hover:shadow-lg';
+            subjectCard.innerHTML = `
+                <h3 class="text-xl font-bold mb-2">${subject.name}</h3>
+                <p class="text-gray-400">Code: ${subject.code}</p>
+                <div class="mt-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        View Resources
+                    </button>
+                </div>
+            `;
+            container.appendChild(subjectCard);
+        });
+    }
+
+    // Load More functionality
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const moreSemesters = document.getElementById('more-semesters');
+
+    loadMoreBtn.addEventListener('click', () => {
+        moreSemesters.classList.remove('hidden');
+        loadMoreBtn.classList.add('hidden');
+    });
+
+    // Add click event listeners to semester buttons
+    document.querySelectorAll('.semester-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            document.querySelectorAll('.semester-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600');
+                btn.classList.add('bg-gray-700');
+            });
+            
+            // Add active class to clicked button
+            button.classList.remove('bg-gray-700');
+            button.classList.add('bg-blue-600');
+            
+            // Display subjects for selected semester
+            const semester = button.dataset.semester;
+            displaySubjects(semester);
+        });
+    });
+
+    // Set department title based on URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const department = urlParams.get('dept');
+    if (department) {
+        document.getElementById('department-title').textContent = department.toUpperCase();
+    }
+
+    // Display first semester subjects by default
+    displaySubjects(1);
+    document.querySelector('.semester-btn[data-semester="1"]').classList.add('bg-blue-600');
+</script>
+</body>
+</html> 
